@@ -34,3 +34,14 @@ def index(request):
         "entries": util.list_entries()
     })
 
+def openTitle(request, title):
+     #Check if entry is valid
+    if util.get_entry(title) != None:
+
+        #Create html from markdown
+        html = markdown.markdown(entry)
+        return HttpResponse(f"{html}")
+    else:
+
+        #Print error
+        return HttpResponse("<h1>The page does not exist</h1>")
