@@ -7,6 +7,27 @@
         <title>{% block title %}{% endblock %}</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link href="{% static 'encyclopedia/styles.css' %}" rel="stylesheet">
+        <style>
+            .inline {
+                display: inline;
+            }
+
+            .link-button {
+                background: none;
+                border: none;
+                color: blue;
+                text-decoration: underline;
+                cursor: pointer;
+                font-size: 1em;
+                font-family: serif;
+            }
+            .link-button:focus {
+                outline: none;
+            }
+            .link-button:active {
+                color:red;
+            }
+        </style>
     </head>
     <body>
         <div class="row">

@@ -9,7 +9,14 @@
 
     <ul>
         {% for entry in entries %}
-            <li><a href = "url 'entries/{{entry}}'"></li>
+        <li>
+            <form method="post" action="{% url 'encyclopedia:index' %}" class="inline">
+                {% csrf_token %}
+                <button type="submit" name="submit_param" value="{{entry}}" class="link-button">
+                {{entry}}
+                </button>
+            </form>
+        </li>
         {% endfor %}
     </ul>
 
