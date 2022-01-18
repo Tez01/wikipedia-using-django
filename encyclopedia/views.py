@@ -4,6 +4,8 @@ from django.shortcuts import render
 import datetime
 import markdown
 from django.http import HttpResponse
+from django.urls import reverse
+from django.http import HttpResponseRedirect
 
 from . import util
 
@@ -17,16 +19,9 @@ def index(request):
             #Fetch the entry
             entry = util.get_entry(title)
 
-            #Check if entry is valid
-            if util.get_entry(title) != None:
-
-                #Create html from markdown
-                html = markdown.markdown(entry)
-                return HttpResponse(f"{html}")
-            else:
-
-                #Print error
-                return HttpResponse("<h1>The page does not exist</h1>")
+        #redirect to the required page
+        return HttpResponseRedirect(reverse("encyclopedia:openTitle", args=(title,)))
+        
         
             
 
@@ -35,7 +30,10 @@ def index(request):
     })
 
 def openTitle(request, title):
-     #Check if entry is valid
+    #Fetch the entry
+    entry = util.get_entry(title)
+
+    #Check if entry is valid
     if util.get_entry(title) != None:
 
         #Create html from markdown
